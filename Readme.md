@@ -6,17 +6,17 @@ Header format parser to match Netlify's [format](https://www.netlify.com/docs/he
 
 ```go
 /*
-  Content-Type: text/plain
-  X-Foo: 1
-  X-bar: 2
+  X-Frame-Options: DENY
+  X-XSS-Protection: 1; mode=block
 
-# Some comment
-/admin/*
-  WWW-Authenticate: Basic whatever
+## A path:
+/templates/index.html
+  # Headers for that path:
+  X-Frame-Options: DENY
+  X-XSS-Protection: 1; mode=block
 
-/docs/*
-  X-Foo: 1
-X-bar   : 1
+/templates/index2.html
+  X-Frame-Options: SAMEORIGIN
 ```
 
 yields
@@ -24,27 +24,24 @@ yields
 ```json
 {
   "/*": {
-    "Content-Type": [
-      "text/plain"
+    "X-Frame-Options": [
+      "DENY"
     ],
-    "X-Bar": [
-      "2"
-    ],
-    "X-Foo": [
-      "1"
+    "X-Xss-Protection": [
+      "1; mode=block"
     ]
   },
-  "/admin/*": {
-    "Www-Authenticate": [
-      "Basic whatever"
+  "/templates/index.html": {
+    "X-Frame-Options": [
+      "DENY"
+    ],
+    "X-Xss-Protection": [
+      "1; mode=block"
     ]
   },
-  "/docs/*": {
-    "X-Bar": [
-      "1"
-    ],
-    "X-Foo": [
-      "1"
+  "/templates/index2.html": {
+    "X-Frame-Options": [
+      "SAMEORIGIN"
     ]
   }
 }
