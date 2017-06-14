@@ -57,7 +57,15 @@ func Parse(r io.Reader) (map[string]http.Header, error) {
 			rules[path] = fields
 		}
 
+		// new path
 		path = line
+
+		// already exists
+		if f, ok := rules[path]; ok {
+			fields = f
+			continue
+		}
+
 		fields = make(http.Header)
 	}
 

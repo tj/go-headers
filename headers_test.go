@@ -21,6 +21,11 @@ func Example() {
 
 		/templates/index2.html
 		  X-Frame-Options: SAMEORIGIN
+
+		/*
+		  Link: </style.css>; rel=preload; as=stylesheet
+		  Link: </main.js>; rel=preload; as=script
+		  Link: </image.jpg>; rel=preload; as=image
   `))
 
 	enc := json.NewEncoder(os.Stdout)
@@ -29,6 +34,11 @@ func Example() {
 	// Output:
 	// {
 	//   "/*": {
+	//     "Link": [
+	//       "\u003c/style.css\u003e; rel=preload; as=stylesheet",
+	//       "\u003c/main.js\u003e; rel=preload; as=script",
+	//       "\u003c/image.jpg\u003e; rel=preload; as=image"
+	//     ],
 	//     "X-Frame-Options": [
 	//       "DENY"
 	//     ],
