@@ -49,7 +49,7 @@ yields
 
 ---
 
-[![GoDoc](https://godoc.org/github.com/tj/headers-go?status.svg)](https://godoc.org/github.com/tj/headers-go)
+[![GoDoc](https://godoc.org/github.com/tj/go-headers?status.svg)](https://godoc.org/github.com/tj/go-headers)
 ![](https://img.shields.io/badge/license-MIT-blue.svg)
 ![](https://img.shields.io/badge/status-stable-green.svg)
 
