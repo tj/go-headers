@@ -1,3 +1,4 @@
+// Package headers provides Netlify style _headers file format parsing.
 package headers
 
 import (
